@@ -16,3 +16,4 @@ Run `~/templates/update` in your project folder to update it according to these 
 ## Included Templates
 
 * [`.editorconfig`](_editorconfig) for automatic style configuration in IDEs
+* [`.gitignore`] for commonly ignored files
