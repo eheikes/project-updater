@@ -16,8 +16,8 @@ Run `~/templates/update` in your project folder to update it according to these 
 ## Included
 
 * [`.editorconfig`](_editorconfig) for automatic style configuration in IDEs
-* [`.gitignore`] for commonly ignored files
-* [`.travis.yml`] for CI/CD
+* [`.gitignore`](_gitignore) for commonly ignored files
+* [`.travis.yml`](_travis.yml) for CI/CD
 * for Node.js projects:
   * normalizes the `package.json` using [`normalize-pkg`](https://github.com/jonschlinkert/normalize-pkg)
   * creates an `index.js` file if one doesn't exist
