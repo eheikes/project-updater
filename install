@@ -3,4 +3,5 @@ npm install -g update \
   updater-editorconfig \
   updater-gitignore \
   updater-license \
-  updater-package
+  updater-package \
+  updater-travis
