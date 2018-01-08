@@ -12,3 +12,7 @@ You'll need [Node.js](https://nodejs.org/) installed on your machine to use this
 ## Usage
 
 Run `~/templates/update` in your project folder to update it according to these conventions.
+
+## Included Templates
+
+* [`.editorconfig`](_editorconfig) for automatic style configuration in IDEs
