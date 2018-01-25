@@ -33,6 +33,13 @@ pids/
 # Yarn Integrity file
 .yarn-integrity
 
+# Whitesource
+ws-*.json
+ws-log-npm-report
+
+# Terraform
+terraform.tfstate*
+
 # dotenv environment variables file
 .env
 
