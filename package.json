@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/eheikes/project-template/issues"
   },
-  "homepage": "https://github.com/eheikes/project-template#readme"
+  "homepage": "https://github.com/eheikes/project-template#readme",
+  "dependencies": {
+    "listr": "^0.13.0"
+  }
 }
