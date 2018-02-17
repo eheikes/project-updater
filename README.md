@@ -16,4 +16,5 @@ Run `update-project` in your project folder to update it according to these conv
 * [`.gitignore`](templates/gitignore) for commonly ignored files
 * [`.travis.yml`](templates/travis.yml) for CI/CD
 * For npm packages:
+  * Updates the `package-lock.json` file
   * Updates the `yarn.lock` file
