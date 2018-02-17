@@ -1,8 +1,0 @@
-#!/bin/sh
-updaters="editorconfig gitignore license travis"
-if [ -f "package.json" ]
-then
-  updaters="$updaters package"
-fi
-
-update $updaters

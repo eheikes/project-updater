@@ -1,0 +1,29 @@
+{
+  "name": "@eheikes/project-template",
+  "version": "0.1.0",
+  "description": "Templates and standard configuration for software projects",
+  "main": "update-project.js",
+  "bin": {
+    "update-project": "./update-project.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eheikes/project-template.git"
+  },
+  "author": "Eric Heikes <eheikes@gmail.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "project",
+    "template"
+  ],
+  "bugs": {
+    "url": "https://github.com/eheikes/project-template/issues"
+  },
+  "homepage": "https://github.com/eheikes/project-template#readme",
+  "dependencies": {
+    "listr": "^0.13.0"
+  }
+}
