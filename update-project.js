@@ -15,7 +15,8 @@ const loadTask = name => {
 const tasks = new Listr([
   loadTask('gitignore'),
   loadTask('editorconfig'),
-  loadTask('travisci')
+  loadTask('travisci'),
+  loadTask('yarn-lock')
 ])
 
 tasks.run().catch(err => {

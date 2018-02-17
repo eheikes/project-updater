@@ -15,3 +15,5 @@ Run `update-project` in your project folder to update it according to these conv
 * [`.editorconfig`](templates/editorconfig) for automatic style configuration in IDEs
 * [`.gitignore`](templates/gitignore) for commonly ignored files
 * [`.travis.yml`](templates/travis.yml) for CI/CD
+* For npm packages:
+  * Updates the `yarn.lock` file

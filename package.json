@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/eheikes/project-template#readme",
   "dependencies": {
+    "execa": "^0.9.0",
     "listr": "^0.13.0"
   }
 }
