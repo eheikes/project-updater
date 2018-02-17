@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "Templates and standard configuration for software projects",
   "main": "update-project.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "update-project": "./update-project.js"
   },
