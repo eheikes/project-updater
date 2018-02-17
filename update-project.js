@@ -17,7 +17,8 @@ const tasks = new Listr([
   loadTask('editorconfig'),
   loadTask('travisci'),
   loadTask('package-lock'),
-  loadTask('yarn-lock')
+  loadTask('yarn-lock'),
+  loadTask('contributors')
 ])
 
 tasks.run().catch(err => {

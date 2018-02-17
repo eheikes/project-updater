@@ -18,3 +18,4 @@ Run `update-project` in your project folder to update it according to these conv
 * For npm packages:
   * Updates the `package-lock.json` file
   * Updates the `yarn.lock` file
+  * Updates the `contributors` property in `package.json` from the git history
