@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "author": "{{git.user.name}} <{{git.user.email}}>",
+  "license": "Apache-2.0",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{git.github.user}}/{{pkg.fullName}}.git"
+  },
+  "homepage": "https://github.com/{{git.github.user}}/{{pkg.fullName}}#readme",
+  "bugs": {
+    "url": "https://github.com/{{git.github.user}}/{{pkg.fullName}}/issues"
+  }
+}
