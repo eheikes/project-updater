@@ -11,6 +11,8 @@
   "bugs": {
     "url": "https://github.com/{{git.github.user}}/{{pkg.fullName}}/issues"
   },
+  "files": [
+  ],
   "standard": {
     "env": {
       "jasmine": true,
