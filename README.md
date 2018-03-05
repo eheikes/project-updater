@@ -24,6 +24,7 @@ Run `update-project` in your project folder to update it according to these conv
 * For npm packages:
   * Adds minimal properties to the `package.json`
   * Adds `standard` dependency, configuration, and `lint` script
+  * Upgrades the packages to the latest version (within defined range)
   * Updates the `package-lock.json` file
   * Updates the `yarn.lock` file
   * Updates the `contributors` property in `package.json` from the git history

@@ -3,7 +3,7 @@ const { readFile } = require('fs')
 const { join } = require('path')
 const { safeLoad } = require('js-yaml')
 const { promisify } = require('util')
-const { isNpmPackage } = require('../lib/checks')
+const { isNpmPackage, isYarnInstalled } = require('../lib/checks')
 
 module.exports = opts => {
   const depsFile = join(opts.cwd, 'templates', 'dependencies.yaml')
@@ -11,6 +11,7 @@ module.exports = opts => {
   return {
     title: 'package.json dependencies',
     skip: () => {
+      if (!isYarnInstalled()) { return 'Yarn is not installed' }
       if (!isNpmPackage(opts.cwd)) { return 'No package.json found' }
     },
     task: () => {

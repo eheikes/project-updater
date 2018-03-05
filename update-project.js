@@ -13,15 +13,16 @@ const loadTask = name => {
 }
 
 const tasks = new Listr([
-  loadTask('gitignore'),
-  loadTask('editorconfig'),
-  loadTask('travisci'),
-  loadTask('package-props'),
-  loadTask('package-subprops'),
-  loadTask('package-deps'),
-  loadTask('package-lock'),
-  loadTask('yarn-lock'),
-  loadTask('contributors')
+  loadTask('gitignore'), // add .gitignore
+  loadTask('editorconfig'), // add .editorconfig
+  loadTask('travisci'), // add .travis.yml
+  loadTask('package-props'), // normalize package.json
+  loadTask('package-subprops'), // normalize package.json
+  loadTask('yarn-lock'), // generate yarn.lock
+  loadTask('package-deps'), // add npm deps
+  loadTask('upgrade-deps'), // upgrade npm deps
+  loadTask('package-lock'), // sync package-lock.json
+  loadTask('contributors') // update package.json contributors
 ])
 
 tasks.run().catch(err => {
