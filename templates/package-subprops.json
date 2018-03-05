@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "lint": "standard --fix --verbose"
+    "lint": "standard --fix --verbose",
+    "test": "NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine"
   }
 }
