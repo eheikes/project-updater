@@ -2,9 +2,15 @@
 
 This folder contains templates and configuration for my various software projects. It includes a script to update the project in the working directory.
 
+## Requirements
+
+* [Node.js](https://nodejs.org/) (v6 or higher)
+* Git
+* [Yarn](https://yarnpkg.com/) (for Node.js projects)
+
 ## Installation
 
-You'll need [Node.js](https://nodejs.org/) installed on your machine to use this tool. Then run `npm i -g @eheikes/project-template` to install this package.
+Run `npm i -g @eheikes/project-template` to install this package.
 
 ## Usage
 
