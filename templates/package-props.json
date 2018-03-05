@@ -10,5 +10,11 @@
   "homepage": "https://github.com/{{git.github.user}}/{{pkg.fullName}}#readme",
   "bugs": {
     "url": "https://github.com/{{git.github.user}}/{{pkg.fullName}}/issues"
+  },
+  "standard": {
+    "env": {
+      "jasmine": true,
+      "node": true
+    }
   }
 }

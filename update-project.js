@@ -16,7 +16,9 @@ const tasks = new Listr([
   loadTask('gitignore'),
   loadTask('editorconfig'),
   loadTask('travisci'),
-  loadTask('package'),
+  loadTask('package-props'),
+  loadTask('package-subprops'),
+  loadTask('package-deps'),
   loadTask('package-lock'),
   loadTask('yarn-lock'),
   loadTask('contributors')

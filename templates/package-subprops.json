@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "lint": "standard --fix --verbose"
+  }
+}
