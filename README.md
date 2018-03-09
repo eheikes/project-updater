@@ -16,6 +16,8 @@ Run `npm i -g @eheikes/project-template` to install this package.
 
 Run `update-project` in your project folder to update it according to these conventions.
 
+Note that human intervention is still required! You'll need to review the changes and commit them or roll them back.
+
 ## Included
 
 * [`.editorconfig`](templates/editorconfig) for automatic style configuration in IDEs
