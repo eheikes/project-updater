@@ -7,7 +7,6 @@ const { isNpmPackage, isYarnInstalled } = require('../lib/checks')
 
 module.exports = opts => {
   const depsFile = join(opts.cwd, 'templates', 'dependencies.yaml')
-  const package = join(opts.cwd, 'package.json')
   return {
     title: 'package.json dependencies',
     skip: () => {

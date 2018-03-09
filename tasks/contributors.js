@@ -4,7 +4,7 @@ const { isNpmPackage } = require('../lib/checks')
 const { updateJsonProperty } = require('../lib/json')
 
 module.exports = opts => {
-  const package = path.join(opts.cwd, 'package.json')
+  const pkg = path.join(opts.cwd, 'package.json')
   return {
     title: 'contributors',
     skip: () => {
@@ -17,9 +17,9 @@ module.exports = opts => {
           return matches && matches[1]
         })
       })
-      .then(contributors => {
-        return updateJsonProperty(package, 'contributors', contributors)
-      })
+        .then(contributors => {
+          return updateJsonProperty(pkg, 'contributors', contributors)
+        })
     }
   }
 }

@@ -7,7 +7,7 @@ const { fillTemplate } = require('../lib/template')
 
 module.exports = opts => {
   const template = path.join(opts.cwd, 'templates', 'package-props.json')
-  const package = path.join(opts.cwd, 'package.json')
+  const pkgFilename = path.join(opts.cwd, 'package.json')
   return {
     title: 'package.json properties',
     skip: () => {
@@ -16,13 +16,13 @@ module.exports = opts => {
     task: () => {
       return Promise.all([
         getGitConfig(),
-        getJson(package),
+        getJson(pkgFilename),
         getJson(template)
       ]).then(([git, pkg, originalTemplate]) => {
         pkg = enhanceNpmPackage(pkg)
         const templateData = Object.assign({}, { git }, { pkg })
         const templateValues = fillTemplate(originalTemplate, templateData)
-        return addJsonIfMissing(package, templateValues)
+        return addJsonIfMissing(pkgFilename, templateValues)
       })
     }
   }
