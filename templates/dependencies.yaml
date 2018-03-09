@@ -1,4 +1,6 @@
 dependencies: []
 devDependencies:
+  - jasmine
+  - jasmine-spec-reporter
   - nyc
   - standard
