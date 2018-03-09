@@ -10,7 +10,8 @@
     "update-project": "./update-project.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine",
+    "lint": "standard --fix --verbose"
   },
   "repository": {
     "type": "git",
@@ -32,5 +33,42 @@
     "js-yaml": "^3.10.0",
     "listr": "^0.13.0",
     "parse-packagejson-name": "^1.0.1"
+  },
+  "devDependencies": {
+    "nyc": "^11.4.1",
+    "standard": "^11.0.0"
+  },
+  "contributors": [
+    "Eric Heikes <eheikes@gmail.com>"
+  ],
+  "files": [
+    "lib",
+    "tasks",
+    "templates",
+    "update-project.js"
+  ],
+  "standard": {
+    "env": {
+      "jasmine": true,
+      "node": true
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 95,
+    "statements": 95,
+    "functions": 95,
+    "branches": 95,
+    "include": [
+      "*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "cache": false,
+    "all": false,
+    "report-dir": "./coverage"
   }
 }
