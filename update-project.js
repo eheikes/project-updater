@@ -22,7 +22,8 @@ const tasks = new Listr([
   loadTask('package-deps'), // add npm deps
   loadTask('upgrade-deps'), // upgrade npm deps
   loadTask('package-lock'), // sync package-lock.json
-  loadTask('contributors') // update package.json contributors
+  loadTask('contributors'), // update package.json contributors
+  loadTask('test') // test files
 ])
 
 tasks.run().catch(err => {
