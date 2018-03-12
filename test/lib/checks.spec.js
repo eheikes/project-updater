@@ -1,5 +1,5 @@
 const proxyquire = require('proxyquire')
-const { addFixtures, createTempFolder } = require('./helpers/fixture')
+const { addFixtures, createTempFolder } = require('../helpers/fixture')
 
 describe('checks routines', () => {
   let check
@@ -8,7 +8,7 @@ describe('checks routines', () => {
 
   beforeEach(() => {
     execaSpy = jasmine.createSpyObj('exec', ['sync'])
-    check = proxyquire('../lib/checks', {
+    check = proxyquire('../../lib/checks', {
       'execa': execaSpy
     })
     folder = createTempFolder()

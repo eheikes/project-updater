@@ -12,6 +12,6 @@ module.exports = opts => {
       'install',
       '--ignore-scripts',
       '--non-interactive'
-    ])
+    ], { cwd: opts.cwd })
   }
 }

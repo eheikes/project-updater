@@ -6,7 +6,7 @@ const { enhanceNpmPackage } = require('../lib/npm')
 const { fillTemplate } = require('../lib/template')
 
 module.exports = opts => {
-  const template = path.join(opts.cwd, 'templates', 'package-subprops.json')
+  const template = path.join(opts.templateDir, 'package-subprops.json')
   const pkgFilename = path.join(opts.cwd, 'package.json')
   return {
     title: 'package.json subproperties',

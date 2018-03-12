@@ -11,15 +11,18 @@ module.exports = opts => {
       if (!isNpmPackage(opts.cwd)) { return 'No package.json found' }
     },
     task: () => {
-      return execa('git', ['--no-pager', 'shortlog', '-se', 'HEAD']).then(response => {
+      return execa(
+        'git',
+        ['--no-pager', 'shortlog', '-se', 'HEAD'],
+        { cwd: opts.cwd }
+      ).then(response => {
         return response.stdout.split('\n').map(line => {
           const matches = /^\s+\d+\s+(.+)$/.exec(line)
           return matches && matches[1]
         })
+      }).then(contributors => {
+        return updateJsonProperty(pkg, 'contributors', contributors)
       })
-        .then(contributors => {
-          return updateJsonProperty(pkg, 'contributors', contributors)
-        })
     }
   }
 }

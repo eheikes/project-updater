@@ -28,7 +28,7 @@ describe('git routines', () => {
     fsStub.stat.and.callFake((file, callback) => {
       callback(null, { isDirectory: () => true })
     })
-    getGitConfig = proxyquire('../lib/git', {
+    getGitConfig = proxyquire('../../lib/git', {
       'execa': execaStub,
       'fs': fsStub
     }).getGitConfig
@@ -37,8 +37,10 @@ describe('git routines', () => {
   describe('getGitConfig', () => {
     let config
 
-    beforeEach(async () => {
-      config = await getGitConfig()
+    beforeEach(() => {
+      return getGitConfig().then(data => {
+        config = data
+      })
     })
 
     it('should include the global (parsed) git config', () => {
@@ -60,11 +62,13 @@ describe('git routines', () => {
     })
 
     describe('when the CWD is NOT a git repo', () => {
-      beforeEach(async () => {
+      beforeEach(() => {
         fsStub.stat.and.callFake((file, callback) => {
           callback(null, { isDirectory: () => false })
         })
-        config = await getGitConfig()
+        return getGitConfig().then(data => {
+          config = data
+        })
       })
 
       it('should return only the global config', () => {

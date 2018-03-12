@@ -1,8 +1,6 @@
-const fs = require('fs')
 const path = require('path')
-const { promisify } = require('util')
-const { addFixtures, createTempFolder } = require('./helpers/fixture')
-const { replaceFile } = require('../lib/replace-file')
+const { addFixtures, createTempFolder, getFileContents } = require('../helpers/fixture')
+const { replaceFile } = require('../../lib/replace-file')
 
 describe('replace-file routines', () => {
   let folder
@@ -11,14 +9,14 @@ describe('replace-file routines', () => {
     beforeEach(async () => {
       folder = createTempFolder()
       addFixtures(folder, 'package.json', 'test.txt')
-      await replaceFile(
+      return replaceFile(
         path.join(folder, 'test.txt'),
         path.join(folder, 'package.json')
       )
     })
 
-    it('should replace the destination file with the source', async () => {
-      const contents = await promisify(fs.readFile)(path.join(folder, 'package.json'), 'utf8')
+    it('should replace the destination file with the source', () => {
+      const contents = getFileContents(path.join(folder, 'package.json'))
       expect(contents).toContain('This is a test')
     })
   })

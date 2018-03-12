@@ -1,4 +1,5 @@
-const { copyFileSync } = require('fs')
+const dotProp = require('dot-prop')
+const { copyFileSync, readFileSync, writeFileSync } = require('fs')
 const { join } = require('path')
 const tempy = require('tempy')
 
@@ -14,4 +15,22 @@ exports.addFixtures = (destPath, ...filenames) => {
 
 exports.createTempFolder = () => {
   return tempy.directory()
+}
+
+exports.getFileContents = (filename) => {
+  return readFileSync(filename, 'utf8')
+}
+
+exports.getTaskOpts = () => {
+  const folder = tempy.directory()
+  return {
+    cwd: folder,
+    templateDir: join(__dirname, '..', '..', 'templates')
+  }
+}
+
+exports.setJsonContents = (filename, prop, val) => {
+  let data = JSON.parse(exports.getFileContents(filename))
+  dotProp.set(data, prop, val)
+  writeFileSync(filename, JSON.stringify(data, null, 2), 'utf8')
 }

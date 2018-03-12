@@ -1,4 +1,4 @@
-const { fillTemplate } = require('../lib/template')
+const { fillTemplate } = require('../../lib/template')
 
 describe('template routines', () => {
   const data = {

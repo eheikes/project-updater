@@ -10,6 +10,6 @@ module.exports = opts => {
     task: () => execa('npm', [
       'install',
       '--package-lock-only'
-    ])
+    ], { cwd: opts.cwd })
   }
 }

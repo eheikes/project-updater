@@ -8,6 +8,6 @@ module.exports = opts => {
       if (!isYarnInstalled()) { return 'Yarn is not installed' }
       if (!isNpmPackage(opts.cwd)) { return 'No package.json found' }
     },
-    task: () => execa('yarn', ['upgrade'])
+    task: () => execa('yarn', ['upgrade'], { cwd: opts.cwd })
   }
 }

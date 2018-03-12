@@ -1,4 +1,4 @@
-const { enhanceNpmPackage } = require('../lib/npm')
+const { enhanceNpmPackage } = require('../../lib/npm')
 
 describe('npm routines', () => {
   describe('enhanceNpmPackage', () => {
