@@ -37,7 +37,7 @@ describe('JSON routines', () => {
   })
 
   describe('getJson', () => {
-    it('should return the parsed JSON of a file', async () => {
+    it('should return the parsed JSON of a file', () => {
       return getJson(join(folder, 'package.json')).then(json => {
         expect(json.name).toBe('foobar')
         expect(json.version).toBe('0.1.0')
@@ -49,7 +49,7 @@ describe('JSON routines', () => {
     let filename
     let json
 
-    beforeEach(async () => {
+    beforeEach(() => {
       filename = join(folder, 'package.json')
       return updateJsonProperties(filename, {
         name: 'new name',
@@ -97,7 +97,7 @@ describe('JSON routines', () => {
     let filename
     let json
 
-    beforeEach(async () => {
+    beforeEach(() => {
       filename = join(folder, 'package.json')
       return updateJsonProperty(filename, 'name', 'new name').then(() => {
         return updateJsonProperty(filename, 'foo', 'bar')

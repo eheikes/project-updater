@@ -6,7 +6,7 @@ describe('replace-file routines', () => {
   let folder
 
   describe('replaceFile', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
       folder = createTempFolder()
       addFixtures(folder, 'package.json', 'test.txt')
       return replaceFile(
