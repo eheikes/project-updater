@@ -1,6 +1,6 @@
 const mkdirp = require('mkdirp')
 const { join } = require('path')
-const { promisify } = require('util')
+const pify = require('pify')
 const { replaceFile } = require('../lib/replace-file')
 
 module.exports = opts => {
@@ -9,7 +9,7 @@ module.exports = opts => {
     title: 'testing framework',
     task: () => {
       // Create the test folders, if necessary.
-      return promisify(mkdirp)(join(testPath, 'helpers')).then(() => {
+      return pify(mkdirp)(join(testPath, 'helpers')).then(() => {
         // Copy the template files.
         const files = [{
           src: join(opts.templateDir, 'jasmine.json'),

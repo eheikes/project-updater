@@ -2,7 +2,7 @@ const execa = require('execa')
 const { readFile } = require('fs')
 const { join } = require('path')
 const { safeLoad } = require('js-yaml')
-const { promisify } = require('util')
+const pify = require('pify')
 const { isNpmPackage, isYarnInstalled } = require('../lib/checks')
 
 module.exports = opts => {
@@ -14,7 +14,7 @@ module.exports = opts => {
       if (!isNpmPackage(opts.cwd)) { return 'No package.json found' }
     },
     task: () => {
-      return promisify(readFile)(depsFile, 'utf8').then(fileData => {
+      return pify(readFile)(depsFile, 'utf8').then(fileData => {
         return safeLoad(fileData)
       }).then(pkgs => {
         return Promise.all([

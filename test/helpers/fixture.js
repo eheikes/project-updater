@@ -1,5 +1,5 @@
 const dotProp = require('dot-prop')
-const { copyFileSync, readFileSync, writeFileSync } = require('fs')
+const { copySync, readFileSync, writeFileSync } = require('fs-extra')
 const { join } = require('path')
 const tempy = require('tempy')
 
@@ -9,7 +9,7 @@ exports.addFixtures = (destPath, ...filenames) => {
   filenames.forEach(filename => {
     const sourceFilename = join(fixturesPath, filename)
     const destFilename = join(destPath, filename)
-    copyFileSync(sourceFilename, destFilename)
+    copySync(sourceFilename, destFilename)
   })
 }
 
