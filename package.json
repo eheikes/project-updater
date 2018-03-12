@@ -1,6 +1,6 @@
 {
   "name": "@eheikes/project-template",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Templates and standard configuration for software projects",
   "main": "update-project.js",
   "publishConfig": {
