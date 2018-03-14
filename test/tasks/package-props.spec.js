@@ -13,7 +13,6 @@ describe('package.json properties', () => {
     }
   }
 
-  let createTask
   let gitStub
   let opts
   let task
@@ -21,21 +20,20 @@ describe('package.json properties', () => {
   beforeEach(() => {
     gitStub = jasmine.createSpyObj('git lib', ['getGitConfig'])
     gitStub.getGitConfig.and.returnValue(Promise.resolve(gitConfig))
-    createTask = proxyquire('../../tasks/package-props', {
+    task = proxyquire('../../tasks/package-props', {
       '../lib/git': gitStub
     })
     opts = getTaskOpts()
-    task = createTask(opts)
   })
 
   describe('skip test', () => {
     it('should be truthy if a package.json does not exist', () => {
-      expect(task.skip()).toBeTruthy()
+      expect(task.skip(opts)).toBeTruthy()
     })
 
     it('should be falsy if a package.json does exist', () => {
       addFixtures(opts.cwd, 'package.json')
-      expect(task.skip()).toBeFalsy()
+      expect(task.skip(opts)).toBeFalsy()
     })
   })
 
@@ -44,7 +42,7 @@ describe('package.json properties', () => {
 
     beforeEach(() => {
       addFixtures(opts.cwd, 'package.json')
-      return task.task().then(() => {
+      return task.task(opts).then(() => {
         pkg = JSON.parse(getFileContents(path.join(opts.cwd, 'package.json')))
       })
     })

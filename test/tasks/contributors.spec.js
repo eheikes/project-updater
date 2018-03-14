@@ -9,35 +9,33 @@ describe('contributors task', () => {
     '     8 Robert Roe <rroe@example.com>'
   ].join('\n')
 
-  let createTask
   let execaStub
   let opts
   let task
 
   beforeEach(() => {
     execaStub = jasmine.createSpy('execa').and.returnValue(Promise.resolve({ stdout: contributors }))
-    createTask = proxyquire('../../tasks/contributors', {
+    task = proxyquire('../../tasks/contributors', {
       execa: execaStub
     })
     opts = getTaskOpts()
-    task = createTask(opts)
   })
 
   describe('skip test', () => {
     it('should be falsy if a package.json exists', () => {
       addFixtures(opts.cwd, 'package.json')
-      expect(task.skip()).toBeFalsy()
+      expect(task.skip(opts)).toBeFalsy()
     })
 
     it('should be truthy if a package.json does NOT exist', () => {
-      expect(task.skip()).toBeTruthy()
+      expect(task.skip(opts)).toBeTruthy()
     })
   })
 
   describe('action', () => {
     beforeEach(() => {
       addFixtures(opts.cwd, 'package.json')
-      return task.task()
+      return task.task(opts)
     })
 
     it('should retrieve the contributors using git', () => {

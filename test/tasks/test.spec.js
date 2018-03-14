@@ -1,19 +1,17 @@
 const path = require('path')
 const { getFileContents, getTaskOpts } = require('../helpers/fixture')
-const createTask = require('../../tasks/test')
+const task = require('../../tasks/test')
 
 describe('testing framework', () => {
   let opts
-  let task
 
   beforeEach(() => {
     opts = getTaskOpts()
-    task = createTask(opts)
   })
 
   describe('action', () => {
     beforeEach(() => {
-      return task.task()
+      return task.task(opts)
     })
 
     it('should add the testing files', () => {

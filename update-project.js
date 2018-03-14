@@ -7,25 +7,20 @@ const opts = {
   templateDir: path.resolve(__dirname, 'templates')
 }
 
-const loadTask = name => {
-  const task = require(`./tasks/${name}`)
-  return task(opts)
-}
-
 const tasks = new Listr([
-  loadTask('gitignore'), // add .gitignore
-  loadTask('editorconfig'), // add .editorconfig
-  loadTask('travisci'), // add .travis.yml
-  loadTask('package-props'), // normalize package.json
-  loadTask('package-subprops'), // normalize package.json
-  loadTask('yarn-lock'), // generate yarn.lock
-  loadTask('package-deps'), // add npm deps
-  loadTask('upgrade-deps'), // upgrade npm deps
-  loadTask('package-lock'), // sync package-lock.json
-  loadTask('contributors'), // update package.json contributors
-  loadTask('test') // test files
+  require(`./tasks/gitignore`), // add .gitignore
+  require(`./tasks/editorconfig`), // add .editorconfig
+  require(`./tasks/travisci`), // add .travis.yml
+  require(`./tasks/package-props`), // normalize package.json
+  require(`./tasks/package-subprops`), // normalize package.json
+  require(`./tasks/yarn-lock`), // generate yarn.lock
+  require(`./tasks/package-deps`), // add npm deps
+  require(`./tasks/upgrade-deps`), // upgrade npm deps
+  require(`./tasks/package-lock`), // sync package-lock.json
+  require(`./tasks/contributors`), // update package.json contributors
+  require(`./tasks/test`) // test files
 ])
 
-tasks.run().catch(err => {
+tasks.run(opts).catch(err => {
   console.error(err)
 })

@@ -1,13 +1,11 @@
 const execa = require('execa')
 const { isNpmPackage, isYarnInstalled } = require('../lib/checks')
 
-module.exports = opts => {
-  return {
-    title: 'upgrade dependencies',
-    skip: () => {
-      if (!isYarnInstalled()) { return 'Yarn is not installed' }
-      if (!isNpmPackage(opts.cwd)) { return 'No package.json found' }
-    },
-    task: () => execa('yarn', ['upgrade'], { cwd: opts.cwd })
-  }
+module.exports = {
+  title: 'upgrade dependencies',
+  skip: ctx => {
+    if (!isYarnInstalled()) { return 'Yarn is not installed' }
+    if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
+  },
+  task: ctx => execa('yarn', ['upgrade'], { cwd: ctx.cwd })
 }

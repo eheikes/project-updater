@@ -13,7 +13,6 @@ describe('package.json subproperties', () => {
     }
   }
 
-  let createTask
   let gitStub
   let opts
   let task
@@ -21,21 +20,20 @@ describe('package.json subproperties', () => {
   beforeEach(() => {
     gitStub = jasmine.createSpyObj('git lib', ['getGitConfig'])
     gitStub.getGitConfig.and.returnValue(Promise.resolve(gitConfig))
-    createTask = proxyquire('../../tasks/package-subprops', {
+    task = proxyquire('../../tasks/package-subprops', {
       '../lib/git': gitStub
     })
     opts = getTaskOpts()
-    task = createTask(opts)
   })
 
   describe('skip test', () => {
     it('should be truthy if a package.json does not exist', () => {
-      expect(task.skip()).toBeTruthy()
+      expect(task.skip(opts)).toBeTruthy()
     })
 
     it('should be falsy if a package.json does exist', () => {
       addFixtures(opts.cwd, 'package.json')
-      expect(task.skip()).toBeFalsy()
+      expect(task.skip(opts)).toBeFalsy()
     })
   })
 
@@ -47,7 +45,7 @@ describe('package.json subproperties', () => {
     })
 
     it('should add missing properties', () => {
-      return task.task().then(() => {
+      return task.task(opts).then(() => {
         pkg = JSON.parse(getFileContents(path.join(opts.cwd, 'package.json')))
         expect(pkg.scripts.lint).toBeDefined()
         expect(pkg.scripts.test).toBeDefined()
@@ -57,7 +55,7 @@ describe('package.json subproperties', () => {
     it('should change existing properties', () => {
       setJsonContents(path.join(opts.cwd, 'package.json'), 'scripts.lint', 'lint script')
       setJsonContents(path.join(opts.cwd, 'package.json'), 'scripts.test', 'lint script')
-      return task.task().then(() => {
+      return task.task(opts).then(() => {
         pkg = JSON.parse(getFileContents(path.join(opts.cwd, 'package.json')))
         expect(pkg.scripts.lint).not.toBe('lint script')
         expect(pkg.scripts.test).not.toBe('test script')
