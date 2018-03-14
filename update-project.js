@@ -21,6 +21,14 @@ const tasks = new Listr([
   require(`./tasks/test`) // test files
 ])
 
-tasks.run(opts).catch(err => {
-  console.error(err)
-})
+/* istanbul ignore if */
+if (require.main === module) {
+  tasks.run(opts).catch(err => {
+    console.error(err)
+  })
+}
+
+module.exports = { // for testing
+  opts,
+  tasks
+}
