@@ -1,7 +1,7 @@
 {
-  "name": "@eheikes/project-template",
+  "name": "@eheikes/project-updater",
   "version": "0.3.0",
-  "description": "Templates and standard configuration for software projects",
+  "description": "Tool to automate project maintenance",
   "main": "update-project.js",
   "publishConfig": {
     "access": "public"
@@ -15,18 +15,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eheikes/project-template.git"
+    "url": "git+https://github.com/eheikes/project-updater.git"
   },
   "author": "Eric Heikes <eheikes@gmail.com>",
   "license": "Apache-2.0",
   "keywords": [
+    "automation",
+    "maintenance",
     "project",
-    "template"
+    "tool",
+    "update"
   ],
   "bugs": {
-    "url": "https://github.com/eheikes/project-template/issues"
+    "url": "https://github.com/eheikes/project-updater/issues"
   },
-  "homepage": "https://github.com/eheikes/project-template#readme",
+  "homepage": "https://github.com/eheikes/project-updater#readme",
   "dependencies": {
     "dot-prop": "^4.2.0",
     "execa": "^0.9.0",

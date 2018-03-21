@@ -1,6 +1,6 @@
-# Project Templates
+# Project Updater
 
-This folder contains templates and configuration for my various software projects. It includes a script to update the project in the working directory.
+This tool automates maintenance by updating the project with a specific set of tasks (see "Included" below). It consists of a script to update the project in the working directory.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ This folder contains templates and configuration for my various software project
 
 ## Installation
 
-Run `npm i -g @eheikes/project-template` to install this package.
+Run `npm i -g @eheikes/project-updater` to install this package.
 
 ## Usage
 
