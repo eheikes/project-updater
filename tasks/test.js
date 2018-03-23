@@ -1,7 +1,7 @@
 const mkdirp = require('mkdirp')
 const { join } = require('path')
 const pify = require('pify')
-const { replaceFile } = require('../lib/replace-file')
+const { replaceFile } = require('../lib/file')
 
 module.exports = {
   title: 'testing framework',

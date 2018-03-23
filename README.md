@@ -25,6 +25,7 @@ Note that human intervention is still required! You'll need to review the change
 * [`.travis.yml`](templates/travis.yml) for CI/CD
 * For npm packages:
   * Adds minimal properties to the `package.json`
+  * Adds `LICENSE` file
   * Adds `standard` dependency, configuration, and `lint` script
   * Upgrades the packages to the latest version (within defined range)
   * Updates the `package-lock.json` file

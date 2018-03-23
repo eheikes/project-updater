@@ -1,6 +1,7 @@
 {
   "name": "foobar",
   "version": "0.1.0",
+  "license": "MIT",
   "dependencies": {
     "dot-prop": "^4.2.0",
     "execa": "^0.9.0",

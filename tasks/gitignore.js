@@ -1,5 +1,5 @@
 const path = require('path')
-const { replaceFile } = require('../lib/replace-file')
+const { replaceFile } = require('../lib/file')
 
 module.exports = {
   title: '.gitignore',
