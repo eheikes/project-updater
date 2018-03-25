@@ -3,25 +3,22 @@ const proxyquire = require('proxyquire')
 const { addFixtures, getFileContents, getTaskOpts } = require('../helpers/fixture')
 
 describe('package.json properties', () => {
-  const gitConfig = {
-    github: {
-      user: 'jdoe'
-    },
-    user: {
-      name: 'Jane Doe',
-      email: 'jdoe@example.com'
+  const templateData = {
+    date: {
+      currentYear: 2001
     }
   }
 
-  let gitStub
+  let templateStub
   let opts
   let task
 
   beforeEach(() => {
-    gitStub = jasmine.createSpyObj('git lib', ['getGitConfig'])
-    gitStub.getGitConfig.and.returnValue(Promise.resolve(gitConfig))
+    templateStub = jasmine.createSpy('getProjectData').and.returnValue(Promise.resolve(templateData))
     task = proxyquire('../../tasks/package-props', {
-      '../lib/git': gitStub
+      '../lib/template': {
+        getProjectData: templateStub
+      }
     })
     opts = getTaskOpts()
   })

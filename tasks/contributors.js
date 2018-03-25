@@ -6,7 +6,6 @@ const { updateJsonProperty } = require('../lib/json')
 module.exports = {
   title: 'contributors',
   skip: ctx => {
-    const pkg = path.join(ctx.cwd, 'package.json')
     if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
   },
   task: ctx => {

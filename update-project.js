@@ -13,6 +13,7 @@ const tasks = new Listr([
   require(`./tasks/travisci`), // add .travis.yml
   require(`./tasks/package-props`), // normalize package.json
   require(`./tasks/package-subprops`), // normalize package.json
+  require(`./tasks/readme`), // generate README
   require(`./tasks/license`), // generate LICENSE
   require(`./tasks/yarn-lock`), // generate yarn.lock
   require(`./tasks/package-deps`), // add npm deps

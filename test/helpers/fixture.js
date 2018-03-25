@@ -3,11 +3,11 @@ const { copySync, readFileSync, writeFileSync } = require('fs-extra')
 const { join } = require('path')
 const tempy = require('tempy')
 
-const fixturesPath = join(__dirname, '..', 'fixtures')
+exports.fixturesPath = join(__dirname, '..', 'fixtures')
 
 exports.addFixtures = (destPath, ...filenames) => {
   filenames.forEach(filename => {
-    const sourceFilename = join(fixturesPath, filename)
+    const sourceFilename = join(exports.fixturesPath, filename)
     const destFilename = join(destPath, filename)
     copySync(sourceFilename, destFilename)
   })

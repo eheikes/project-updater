@@ -1,9 +1,32 @@
 const { join } = require('path')
-const { addFixtures, createTempFolder, getFileContents } = require('../helpers/fixture')
-const { replaceFile, writeFile } = require('../../lib/file')
+const { addFixtures, createTempFolder, fixturesPath, getFileContents } = require('../helpers/fixture')
+const { fileExists, readFile, replaceFile, writeFile } = require('../../lib/file')
 
 describe('file routines', () => {
   let folder
+
+  describe('fileExists', () => {
+    beforeEach(() => {
+      folder = createTempFolder()
+    })
+
+    it('should return true if the file exists', () => {
+      addFixtures(folder, 'test.txt')
+      expect(fileExists(join(folder, 'test.txt'))).toBe(true)
+    })
+
+    it('should return false if the file does not exist', () => {
+      expect(fileExists(join(folder, 'test.txt'))).toBe(false)
+    })
+  })
+
+  describe('readFile', () => {
+    it('should return the file contents', () => {
+      return readFile(join(fixturesPath, 'test.txt')).then(contents => {
+        expect(contents).toContain('This is a test')
+      })
+    })
+  })
 
   describe('replaceFile', () => {
     beforeEach(() => {
