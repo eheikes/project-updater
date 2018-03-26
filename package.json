@@ -84,5 +84,10 @@
     "cache": false,
     "all": false,
     "report-dir": "./coverage"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
