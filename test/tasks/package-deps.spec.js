@@ -5,6 +5,7 @@ describe('package.json dependencies task', () => {
   const expectedDevDependencies = [
     'jasmine',
     'jasmine-spec-reporter',
+    'npm-run-all',
     'nyc',
     'standard'
   ]
