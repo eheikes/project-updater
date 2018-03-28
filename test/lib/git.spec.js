@@ -35,10 +35,11 @@ describe('git routines', () => {
   })
 
   describe('getGitConfig', () => {
+    const fakePath = 'fake-path'
     let config
 
     beforeEach(() => {
-      return getGitConfig().then(data => {
+      return getGitConfig(fakePath).then(data => {
         config = data
       })
     })
@@ -49,7 +50,19 @@ describe('git routines', () => {
       expect(config.core.attributesfile).toBe('~/.gitattributes')
     })
 
-    describe('when the CWD is a git repo', () => {
+    it('should check if the given directory is a git repo', () => {
+      expect(fsStub.stat).toHaveBeenCalledWith(`${fakePath}/.git`, jasmine.any(Function))
+    })
+
+    describe('when the directory is a git repo', () => {
+      it('should retrieve the local git config', () => {
+        expect(execaStub).toHaveBeenCalledWith(
+          'git',
+          ['config', '--local', '--list'],
+          { cwd: fakePath }
+        )
+      })
+
       it('should include the local (parsed) git config', () => {
         expect(config.core.repositoryformatversion).toBe('0')
         expect(config.core.filemode).toBe('true')
@@ -61,12 +74,12 @@ describe('git routines', () => {
       })
     })
 
-    describe('when the CWD is NOT a git repo', () => {
+    describe('when the directory is NOT a git repo', () => {
       beforeEach(() => {
         fsStub.stat.and.callFake((file, callback) => {
           callback(null, { isDirectory: () => false })
         })
-        return getGitConfig().then(data => {
+        return getGitConfig(fakePath).then(data => {
           config = data
         })
       })
