@@ -1,10 +1,22 @@
 #!/usr/bin/env node
+const colors = require('colors/safe')
+const { pathExistsSync } = require('fs-extra')
+const parseArgs = require('minimist')
+const { homedir } = require('os')
 const path = require('path')
 const Listr = require('listr')
+const { getEnv } = require('./lib/env')
 
+const args = parseArgs(process.argv.slice(2))
+const homeTemplatesPath = path.join(homedir(), 'templates')
+
+// console.log('process.env:', process.env)
 const opts = {
   cwd: process.cwd(),
-  templateDir: path.resolve(__dirname, 'templates')
+  templateDir: args.templates ||
+    getEnv('TEMPLATES') ||
+    (pathExistsSync(homeTemplatesPath) && homeTemplatesPath) ||
+    path.resolve(__dirname, 'templates')
 }
 
 const tasks = new Listr([
@@ -25,6 +37,7 @@ const tasks = new Listr([
 
 /* istanbul ignore if */
 if (require.main === module) {
+  console.log('Using', colors.white.bold(opts.templateDir), 'for templates.')
   tasks.run(opts).catch(err => {
     console.error(err)
   })
