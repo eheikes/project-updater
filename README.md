@@ -16,13 +16,28 @@ Run `npm i -g @eheikes/project-updater` to install this package.
 
 Run `update-project` in your project folder to update it according to these conventions.
 
+Note that human intervention is still required! You'll need to review the changes and commit them or roll them back.
+
+### Modifying the Templates
+
 There are [built-in templates](templates) used by the updater if no other templates are specified. The tool can instead use a specified folder (in order of precedence):
 
 * a `--templates` argument on the command line
 * a `TEMPLATES` environment variable
 * a `templates` folder in your home directory
 
-Note that human intervention is still required! You'll need to review the changes and commit them or roll them back.
+### Disabling Tasks
+
+You can also disable certain tasks by including a `tasks.json` file in the templates folder, using the [task filenames](tasks) (minus the file extension). For example, the following skips the `package-lock` and `travisci` tasks:
+
+```json
+{
+  "package-lock": false,
+  "travisci": false
+}
+```
+
+Tasks are disabled *only* if they are specified with a `false` value.
 
 ## Included
 
