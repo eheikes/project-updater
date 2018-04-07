@@ -38,6 +38,11 @@ describe('README task', () => {
     it('should be falsy otherwise', () => {
       expect(task.skip(opts)).toBeFalsy()
     })
+
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { readme: false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
   })
 
   describe('action', () => {

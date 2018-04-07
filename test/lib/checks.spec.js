@@ -14,6 +14,30 @@ describe('checks routines', () => {
     folder = createTempFolder()
   })
 
+  describe('isDisabled', () => {
+    it('should return true if the basename is in the tasks and is false', () => {
+      expect(check.isDisabled('foo.js', { foo: false })).toBe(true)
+    })
+
+    it('should return false if the basename is different', () => {
+      expect(check.isDisabled('foobar.js', { foo: false })).toBe(false)
+    })
+
+    it('should return false if the tasks is not false', () => {
+      expect(check.isDisabled('foo.js', { foo: true })).toBe(false)
+      expect(check.isDisabled('foo.js', { foo: null })).toBe(false)
+      expect(check.isDisabled('foo.js', { foo: null })).toBe(false)
+    })
+
+    it('should return false if the task is not defined', () => {
+      expect(check.isDisabled('foo.js', {})).toBe(false)
+    })
+
+    it('should return false if tasks aren\'t given', () => {
+      expect(check.isDisabled('foo.js')).toBe(false)
+    })
+  })
+
   describe('isNpmPackage', () => {
     it('should return true if a package.json file exists in the directory', () => {
       addFixtures(folder, 'package.json')

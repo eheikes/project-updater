@@ -1,9 +1,10 @@
 const execa = require('execa')
-const { isNpmPackage } = require('../lib/checks')
+const { isDisabled, isNpmPackage } = require('../lib/checks')
 
 module.exports = {
   title: 'package-lock.json',
   skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
     if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
   },
   task: ctx => execa('npm', [

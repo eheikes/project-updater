@@ -9,6 +9,17 @@ describe('travisci task', () => {
     opts = getTaskOpts()
   })
 
+  describe('skip test', () => {
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { travisci: false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
+
+    it('should be falsy otherwise', () => {
+      expect(task.skip(opts)).toBeFalsy()
+    })
+  })
+
   describe('action', () => {
     it('should add an .travis.yml file', () => {
       return task.task(opts).then(() => {

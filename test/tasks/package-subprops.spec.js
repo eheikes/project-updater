@@ -32,6 +32,12 @@ describe('package.json subproperties', () => {
       addFixtures(opts.cwd, 'package.json')
       expect(task.skip(opts)).toBeFalsy()
     })
+
+    it('should be truthy if the task is disabled', () => {
+      addFixtures(opts.cwd, 'package.json')
+      opts.tasks = { 'package-subprops': false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
   })
 
   describe('action', () => {

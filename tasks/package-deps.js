@@ -3,11 +3,12 @@ const { readFile } = require('fs')
 const { join } = require('path')
 const { safeLoad } = require('js-yaml')
 const pify = require('pify')
-const { isNpmPackage, isYarnInstalled } = require('../lib/checks')
+const { isDisabled, isNpmPackage, isYarnInstalled } = require('../lib/checks')
 
 module.exports = {
   title: 'package.json dependencies',
   skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
     if (!isYarnInstalled()) { return 'Yarn is not installed' }
     if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
   },

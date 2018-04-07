@@ -9,6 +9,17 @@ describe('testing framework', () => {
     opts = getTaskOpts()
   })
 
+  describe('skip test', () => {
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { test: false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
+
+    it('should be falsy otherwise', () => {
+      expect(task.skip(opts)).toBeFalsy()
+    })
+  })
+
   describe('action', () => {
     beforeEach(() => {
       return task.task(opts)

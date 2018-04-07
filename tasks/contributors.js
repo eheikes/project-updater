@@ -1,11 +1,12 @@
 const execa = require('execa')
 const path = require('path')
-const { isNpmPackage } = require('../lib/checks')
+const { isDisabled, isNpmPackage } = require('../lib/checks')
 const { updateJsonProperty } = require('../lib/json')
 
 module.exports = {
   title: 'contributors',
   skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
     if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
   },
   task: ctx => {

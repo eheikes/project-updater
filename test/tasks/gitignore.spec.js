@@ -9,6 +9,17 @@ describe('gitignore task', () => {
     opts = getTaskOpts()
   })
 
+  describe('skip test', () => {
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { gitignore: false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
+
+    it('should be falsy otherwise', () => {
+      expect(task.skip(opts)).toBeFalsy()
+    })
+  })
+
   describe('action', () => {
     it('should add an .gitignore file', () => {
       return task.task(opts).then(() => {

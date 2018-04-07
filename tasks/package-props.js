@@ -1,11 +1,12 @@
 const { join } = require('path')
-const { isNpmPackage } = require('../lib/checks')
+const { isDisabled, isNpmPackage } = require('../lib/checks')
 const { addJsonIfMissing, getJson } = require('../lib/json')
 const { fillTemplate, getProjectData } = require('../lib/template')
 
 module.exports = {
   title: 'package.json properties',
   skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
     if (!isNpmPackage(ctx.cwd)) { return 'No package.json found' }
   },
   task: ctx => {

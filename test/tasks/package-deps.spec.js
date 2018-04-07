@@ -39,6 +39,11 @@ describe('package.json dependencies task', () => {
       expect(task.skip(opts)).toBeTruthy()
     })
 
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { 'package-deps': false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
+
     it('should be falsy otherwise', () => {
       expect(task.skip(opts)).toBeFalsy()
     })

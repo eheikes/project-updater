@@ -34,6 +34,11 @@ describe('yarn.lock task', () => {
     it('should be falsy otherwise', () => {
       expect(task.skip(opts)).toBeFalsy()
     })
+
+    it('should be truthy if the task is disabled', () => {
+      opts.tasks = { 'yarn-lock': false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
   })
 
   describe('action', () => {

@@ -1,10 +1,12 @@
 const { join } = require('path')
+const { isDisabled } = require('../lib/checks')
 const { fileExists, readFile, writeFile } = require('../lib/file')
 const { fillTemplate, getProjectData } = require('../lib/template')
 
 module.exports = {
   title: 'README.md',
   skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
     if (fileExists(join(ctx.cwd, 'README.md'))) { return 'README already exists' }
   },
   task: ctx => {

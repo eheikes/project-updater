@@ -1,10 +1,14 @@
 const mkdirp = require('mkdirp')
 const { join } = require('path')
 const pify = require('pify')
+const { isDisabled } = require('../lib/checks')
 const { replaceFile } = require('../lib/file')
 
 module.exports = {
   title: 'testing framework',
+  skip: ctx => {
+    if (isDisabled(__filename, ctx.tasks)) { return 'Disabled' }
+  },
   task: ctx => {
     const testPath = join(ctx.cwd, 'test')
     // Create the test folders, if necessary.

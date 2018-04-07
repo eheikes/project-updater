@@ -30,6 +30,12 @@ describe('contributors task', () => {
     it('should be truthy if a package.json does NOT exist', () => {
       expect(task.skip(opts)).toBeTruthy()
     })
+
+    it('should be truthy if the task is disabled', () => {
+      addFixtures(opts.cwd, 'package.json')
+      opts.tasks = { contributors: false }
+      expect(task.skip(opts)).toBeTruthy()
+    })
   })
 
   describe('action', () => {
