@@ -1,10 +1,16 @@
 const Listr = require('listr')
 const { homedir } = require('os')
-const { resolve } = require('path')
+const { join, resolve } = require('path')
 const proxyquire = require('proxyquire')
 
 describe('update-project script', () => {
   describe('opts', () => {
+    const tasksConfig = {
+      "package-lock": false,
+      "travisci": false
+    }
+    const tasksFilename = join(homedir(), 'templates', 'tasks.json')
+
     let opts
 
     beforeEach(() => {
@@ -35,16 +41,33 @@ describe('update-project script', () => {
       })
 
       it('should be set to the $HOME "templates" folder if it exists', () => {
-        opts = proxyquire('../update-project', {
+        opts = proxyquire.noCallThru().load('../update-project', {
           'fs-extra': {
             pathExistsSync: () => true
-          }
+          },
+          [tasksFilename]: tasksConfig
         }).opts
         expect(opts.templateDir).toBe(`${homedir()}/templates`)
       })
 
       it('should otherwise be set to the built-in "templates" folder', () => {
         expect(opts.templateDir).toBe(resolve(__dirname, '..', 'templates'))
+      })
+    })
+
+    describe('enabled tasks', () => {
+      it('should be set to the tasks.json file in the templates directory', () => {
+        opts = proxyquire.noCallThru().load('../update-project', {
+          'fs-extra': {
+            pathExistsSync: () => true
+          },
+          [tasksFilename]: tasksConfig
+        }).opts
+        expect(opts.tasks).toEqual(tasksConfig)
+      })
+
+      it('should default to {} if there is no tasks.json', () => {
+        expect(opts.tasks).toEqual({})
       })
     })
   })

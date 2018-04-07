@@ -10,13 +10,21 @@ const { getEnv } = require('./lib/env')
 const args = parseArgs(process.argv.slice(2))
 const homeTemplatesPath = path.join(homedir(), 'templates')
 
-// console.log('process.env:', process.env)
+const templateDir = args.templates ||
+  getEnv('TEMPLATES') ||
+  (pathExistsSync(homeTemplatesPath) && homeTemplatesPath) ||
+  path.resolve(__dirname, 'templates')
+
+const tasksFilename = path.join(templateDir, 'tasks.json')
+let tasksConfig = {}
+if (pathExistsSync(tasksFilename)) {
+  tasksConfig = require(tasksFilename)
+}
+
 const opts = {
   cwd: process.cwd(),
-  templateDir: args.templates ||
-    getEnv('TEMPLATES') ||
-    (pathExistsSync(homeTemplatesPath) && homeTemplatesPath) ||
-    path.resolve(__dirname, 'templates')
+  tasks: tasksConfig,
+  templateDir: templateDir
 }
 
 const tasks = new Listr([
