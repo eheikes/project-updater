@@ -51,6 +51,11 @@ describe('update-project script', () => {
       })
 
       it('should otherwise be set to the built-in "templates" folder', () => {
+        opts = proxyquire('../update-project', {
+          'os': {
+            homedir: () => './nonexistent'
+          }
+        }).opts
         expect(opts.templateDir).toBe(resolve(__dirname, '..', 'templates'))
       })
     })
