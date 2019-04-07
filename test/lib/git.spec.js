@@ -1,3 +1,4 @@
+const { join, sep } = require('path')
 const proxyquire = require('proxyquire')
 
 const globalGit = `
@@ -51,7 +52,10 @@ describe('git routines', () => {
     })
 
     it('should check if the given directory is a git repo', () => {
-      expect(fsStub.stat).toHaveBeenCalledWith(`${fakePath}/.git`, jasmine.any(Function))
+      expect(fsStub.stat).toHaveBeenCalledWith(
+        join(fakePath, sep, '.git'),
+        jasmine.any(Function)
+      )
     })
 
     describe('when the directory is a git repo', () => {

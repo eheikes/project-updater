@@ -10,7 +10,7 @@
     "update-project": "./update-project.js"
   },
   "scripts": {
-    "test": "NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine",
+    "test": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine",
     "lint": "standard --fix --verbose"
   },
   "repository": {
@@ -34,7 +34,7 @@
     "colors": "^1.2.1",
     "dot-prop": "^4.2.0",
     "execa": "^0.9.0",
-    "extend": "^3.0.1",
+    "extend": "^3.0.2",
     "fs-extra": "^5.0.0",
     "js-yaml": "^3.10.0",
     "listr": "^0.13.0",
@@ -45,11 +45,12 @@
     "spdx-license-list": "^4.0.0"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "jasmine": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
-    "nyc": "^11.4.1",
+    "nyc": "^13.3.0",
     "proxyquire": "^2.0.0",
-    "standard": "^11.0.0",
+    "standard": "^12.0.1",
     "tempy": "^0.2.1"
   },
   "contributors": [
