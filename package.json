@@ -1,6 +1,6 @@
 {
   "name": "@eheikes/project-updater",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Tool to automate project maintenance",
   "main": "update-project.js",
   "publishConfig": {
