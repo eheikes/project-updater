@@ -6,8 +6,8 @@ const proxyquire = require('proxyquire')
 describe('update-project script', () => {
   describe('opts', () => {
     const tasksConfig = {
-      "package-lock": false,
-      "travisci": false
+      'package-lock': false,
+      'travisci': false
     }
     const tasksFilename = join(homedir(), 'templates', 'tasks.json')
 
