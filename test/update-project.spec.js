@@ -1,6 +1,6 @@
 const Listr = require('listr')
 const { homedir } = require('os')
-const { join, resolve } = require('path')
+const { join, resolve, sep } = require('path')
 const proxyquire = require('proxyquire')
 
 describe('update-project script', () => {
@@ -47,7 +47,7 @@ describe('update-project script', () => {
           },
           [tasksFilename]: tasksConfig
         }).opts
-        expect(opts.templateDir).toBe(`${homedir()}/templates`)
+        expect(opts.templateDir).toBe(join(homedir(), sep, 'templates'))
       })
 
       it('should otherwise be set to the built-in "templates" folder', () => {

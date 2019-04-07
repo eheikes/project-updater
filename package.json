@@ -10,7 +10,7 @@
     "update-project": "./update-project.js"
   },
   "scripts": {
-    "test": "NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine",
+    "test": "cross-env NODE_ENV=test JASMINE_CONFIG_PATH=./test/jasmine.json nyc jasmine",
     "lint": "standard --fix --verbose"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "spdx-license-list": "^4.0.0"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "jasmine": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
     "nyc": "^11.4.1",
