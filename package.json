@@ -32,7 +32,7 @@
   "homepage": "https://github.com/eheikes/project-updater#readme",
   "dependencies": {
     "colors": "^1.2.1",
-    "dot-prop": "^4.2.0",
+    "dot-prop": "^5.1.1",
     "execa": "^0.9.0",
     "extend": "^3.0.2",
     "fs-extra": "^5.0.0",
