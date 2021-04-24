@@ -1,6 +1,5 @@
 const mkdirp = require('mkdirp')
 const { join } = require('path')
-const pify = require('pify')
 const { isDisabled } = require('../lib/checks')
 const { replaceFile } = require('../lib/file')
 
@@ -12,7 +11,7 @@ module.exports = {
   task: ctx => {
     const testPath = join(ctx.cwd, 'test')
     // Create the test folders, if necessary.
-    return pify(mkdirp)(join(testPath, 'helpers')).then(() => {
+    return mkdirp(join(testPath, 'helpers')).then(() => {
       // Copy the template files.
       const files = [{
         src: join(ctx.templateDir, 'jasmine.json'),
