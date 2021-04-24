@@ -30,7 +30,7 @@ exports.getTaskOpts = () => {
 }
 
 exports.setJsonContents = (filename, prop, val) => {
-  let data = JSON.parse(exports.getFileContents(filename))
+  const data = JSON.parse(exports.getFileContents(filename))
   dotProp.set(data, prop, val)
   writeFileSync(filename, JSON.stringify(data, null, 2), 'utf8')
 }

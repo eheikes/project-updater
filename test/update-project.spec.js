@@ -7,7 +7,7 @@ describe('update-project script', () => {
   describe('opts', () => {
     const tasksConfig = {
       'package-lock': false,
-      'travisci': false
+      travisci: false
     }
     const tasksFilename = join(homedir(), 'templates', 'tasks.json')
 
@@ -52,7 +52,7 @@ describe('update-project script', () => {
 
       it('should otherwise be set to the built-in "templates" folder', () => {
         opts = proxyquire('../update-project', {
-          'os': {
+          os: {
             homedir: () => './nonexistent'
           }
         }).opts

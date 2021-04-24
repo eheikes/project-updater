@@ -9,7 +9,7 @@ describe('checks routines', () => {
   beforeEach(() => {
     execaSpy = jasmine.createSpyObj('exec', ['sync'])
     check = proxyquire('../../lib/checks', {
-      'execa': execaSpy
+      execa: execaSpy
     })
     folder = createTempFolder()
   })

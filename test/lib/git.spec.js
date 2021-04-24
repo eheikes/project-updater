@@ -30,8 +30,8 @@ describe('git routines', () => {
       callback(null, { isDirectory: () => true })
     })
     getGitConfig = proxyquire('../../lib/git', {
-      'execa': execaStub,
-      'fs': fsStub
+      execa: execaStub,
+      fs: fsStub
     }).getGitConfig
   })
 
